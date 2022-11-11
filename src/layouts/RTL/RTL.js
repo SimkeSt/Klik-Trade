@@ -136,11 +136,11 @@ function RTL(props) {
                 toggleSidebar={toggleSidebar}
               />
               <div className="main-panel" ref={mainPanelRef} data={color}>
-                <RTLNavbar
+                {/* <RTLNavbar
                   brandText={getBrandText(location.pathname)}
                   toggleSidebar={toggleSidebar}
                   sidebarOpened={sidebarOpened}
-                />
+                /> */}
                 <Switch>{getRoutes(routes)}</Switch>
                 {
                   // we don't want the Footer to be rendered on map page

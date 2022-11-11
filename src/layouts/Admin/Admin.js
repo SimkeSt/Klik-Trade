@@ -116,11 +116,11 @@ function Admin(props) {
               toggleSidebar={toggleSidebar}
             />
             <div className="main-panel" ref={mainPanelRef} data={color}>
-              <AdminNavbar
+              {/* <AdminNavbar
                 brandText={getBrandText(location.pathname)}
                 toggleSidebar={toggleSidebar}
                 sidebarOpened={sidebarOpened}
-              />
+              /> */}
               <Switch>
                 {getRoutes(routes)}
                 <Redirect from="*" to="/admin/dashboard" />
