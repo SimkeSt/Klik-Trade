@@ -57,7 +57,7 @@ function Sidebar(props) {
   const linkOnClick = () => {
     document.documentElement.classList.remove("nav-open");
   };
-  const { routes, rtlActive, logo } = props;
+  const { routes, logo } = props;
   let logoImg = null;
   let logoText = null;
   if (logo !== undefined) {
@@ -135,7 +135,7 @@ function Sidebar(props) {
                       onClick={props.toggleSidebar}
                     >
                       <i className={prop.icon} />
-                      <p>{rtlActive ? prop.rtlName : prop.name}</p>
+                      <p>{prop.name}</p>
                     </NavLink>
                   </li>
                 );
@@ -143,7 +143,7 @@ function Sidebar(props) {
               <li className="active-pro">
                 <ReactstrapNavLink href="https://www.creative-tim.com/product/black-dashboard-pro-react?ref=bdr-user-archive-sidebar-upgrade-pro">
                   <i className="tim-icons icon-spaceship" />
-                  <p>Upgrade to PRO</p>
+                  <p>Log out</p>
                 </ReactstrapNavLink>
               </li>
             </Nav>
