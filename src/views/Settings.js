@@ -26,97 +26,139 @@ import {
     CardHeader,
     CardBody,
     Row,
-    Col
+    Col,
+    CardTitle,
+    CardSubtitle,
 } from "reactstrap";
 
-import { ThemeContext, themes } from "../contexts/ThemeContext";
-import { backgroundColors } from "../contexts/BackgroundColorContext";
-import { BackgroundColorContext } from "contexts/BackgroundColorContext";
-
+import { AppearanceContext, themes, colors } from "../contexts/AppearanceContext";
+import { LanguageContext, languages } from "contexts/LanguageContext";
 
 function Settings(props) {
-  return (
-    <BackgroundColorContext.Consumer>
-        {({ color, changeColor }) => (
-            <div className="content">
-            <Row>
-              <Col md="8">
-                <Card>
-                  <CardHeader>
-                    <h5 className="title">Appearance</h5>
-                  </CardHeader>
-                  <CardBody>
-                    <Row>
-                        <Col><h4>THEME</h4></Col>
-                    </Row>
-                    <Row>
-                        <Col><h4>SIDEBAR BACKGROUND</h4></Col>
-                    </Row>
-                {/* Komentarisan kod dole je od obrisanog fajla "FixedPlugin.js" koja je manje vise bila komponenta kao ikonica koja je plutala na stranici 
-                preko koje se definisala tema stranice. S obzirom da jebeno bespotrebno ima mnogo referenci i da sam prikaz komponente zavisi od tih referenci,
-                planiram da i to uprostim kako bi ovde funkcionisalo kako valja, a posto me to trenutno mrzi i nije nuzno, ostaje komentarisano do sledeceg puta */}
-                {/* <Dropdown>
-                    <ul className="dropdown-menu">
-                    <li className="header-title">SIDEBAR BACKGROUND</li>
-                    <li className="adjustments-line">
-                        <div className="badge-colors text-center">
-                        <Badge
-                            color="primary"
-                            className={
-                            props.bgColor === backgroundColors.primary ? "active" : ""
-                            }
-                            onClick={() => {
-                            props.handleBgClick(backgroundColors.primary);
-                            }}
-                        />{" "}
-                        <Badge
-                            color="info"
-                            className={
-                            props.bgColor === backgroundColors.blue ? "active" : ""
-                            }
-                            onClick={() => {
-                            props.handleBgClick(backgroundColors.blue);
-                            }}
-                        />{" "}
-                        <Badge
-                            color="success"
-                            className={
-                            props.bgColor === backgroundColors.green ? "active" : ""
-                            }
-                            onClick={() => {
-                            props.handleBgClick(backgroundColors.green);
-                            }}
-                        />{" "}
-                        </div>
-                    </li>
-                    <li className="adjustments-line text-center color-change">
-                        <ThemeContext.Consumer>
-                        {({ changeTheme }) => (
-                            <>
-                            <span className="color-label">LIGHT MODE</span>{" "}
-                            <Badge
-                                className="light-badge mr-2"
-                                onClick={() => changeTheme(themes.light)}
-                            />{" "}
-                            <Badge
-                                className="dark-badge ml-2"
-                                onClick={() => changeTheme(themes.dark)}
-                            />{" "}
-                            <span className="color-label">DARK MODE</span>{" "}
-                            </>
-                        )}
-                        </ThemeContext.Consumer>
-                    </li>
-                    </ul>
-                </Dropdown> */}
-                  </CardBody>
-                </Card>
-              </Col>
-            </Row>
-          </div>
+    return (
+        <div className="content">
+        <LanguageContext.Consumer>
+        {({ content, changeLanguage }) => (
+            content?.settings && 
+            (<>
+                <Row>
+                    <Col md="6">
+                        <Card className="px-2">
+                            <CardHeader>
+                                <CardTitle>{content.settings.userSettings.title}</CardTitle>
+                            </CardHeader>
+                            <CardBody>
+
+                            </CardBody>
+                        </Card>
+                        <Card className="px-2">
+                            <CardHeader>
+                                <CardTitle>{content.settings.websiteSettings.title}</CardTitle>
+                            </CardHeader>
+                            <CardBody>
+                                <h3 className="title">{content.settings.websiteSettings.appearance.title}</h3>
+                                <AppearanceContext.Consumer>
+                                {({ changeTheme, changeColor }) => (
+                                <> 
+                                    <h5 className="subtitle">{content.settings.websiteSettings.appearance.theme.title}</h5>
+                                    <div className="radio-select">
+                                        <label className="radio-option" onClick={() => changeTheme(themes.light)}>
+                                            <div>
+                                                <input name="radan" type="radio" />{" "}<span>{content.settings.websiteSettings.appearance.theme.light}</span>
+                                            </div>
+                                        </label>
+                                        <label className="radio-option" onClick={() => changeTheme(themes.dark)}>
+                                            <div>
+                                                <input name="radan" type="radio" />{" "}<span>{content.settings.websiteSettings.appearance.theme.dark}</span>
+                                            </div>
+                                        </label>
+                                        <label className="radio-option" onClick={() => changeTheme(themes.system)}>
+                                            <div>
+                                                <input name="radan" type="radio" />{" "}<span>{content.settings.websiteSettings.appearance.theme.system}</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <br/>
+                                    <h5 className="subtitle">{content.settings.websiteSettings.appearance.accentColor}</h5>
+                                    <div className="color-select d-flex justify-content-start">                                        
+                                        <Button
+                                            color="primary"
+                                            className="active"
+                                            onClick={() => {changeColor(colors.primary)}}
+                                        />{" "}
+                                        <Button 
+                                            color="info"
+                                            onClick={() => changeColor(colors.blue)}
+                                        />{" "}
+                                        <Button 
+                                            color="success"
+                                            onClick={() => changeColor(colors.green)}
+                                        />{" "}
+                                    </div>
+                                </>
+                                )}
+                                </AppearanceContext.Consumer>
+                            </CardBody>
+                            <CardBody>
+                                <h3 className="title">{content.settings.websiteSettings.notifications.title}</h3>
+                                <div className="radio-option">
+                                    <h5 className="subtitle">Enable Desktop Notifications</h5>
+                                    <input type="checkbox"/>
+                                </div>
+                            </CardBody>
+                            <CardBody>
+                                <h3 className="title">{content.settings.websiteSettings.language.title}</h3>
+                                <h5 className="subtitle">{content.settings.websiteSettings.language.selectLanguage.title}</h5>
+                                <div className="radio-select">
+                                    <label className="radio-option" onChange={() => changeLanguage(languages.de)}>
+                                        <div>
+                                            <input name="radan" type="radio" />{" "}<span>Deutsch</span>
+                                        </div>
+                                        <span>{content.settings.websiteSettings.language.selectLanguage.de}{" "}<i className="flag flag-de fa-xs"></i></span>
+                                    </label>
+                                    <label className="radio-option" onChange={() => changeLanguage(languages.en)}>
+                                        <div>
+                                            <input name="radan" type="radio" />{" "}<span>English</span>
+                                        </div>
+                                        <span>{content.settings.websiteSettings.language.selectLanguage.en}{" "}<i className="flag flag-us"></i></span>
+                                    </label>
+                                    <label className="radio-option" onChange={() => changeLanguage(languages.sr)}>
+                                        <div>
+                                            <input name="radan" type="radio" />{" "}<span>Српски</span>
+                                        </div>
+                                        <span>{content.settings.websiteSettings.language.selectLanguage.sr}{" "}<i className="flag flag-serbia"></i></span>
+                                    </label>
+                                </div>
+                            </CardBody>
+                        </Card>
+                    </Col>
+                    <Col md="6">
+                        <Card className="px-2">
+                            <CardHeader>
+                                <CardTitle>{content.settings.billingSettings.title}</CardTitle>
+                            </CardHeader>
+                            <CardBody>
+                                <h3 className="title">{content.settings.billingSettings.paymentMethods}</h3>
+                                <Row>
+                                    <Col>
+                                    </Col>
+                                </Row>
+                            </CardBody>
+                            <CardBody>
+                                <h3 className="title">{content.settings.billingSettings.transactionHistory}</h3>
+                                <Row>
+                                    <Col>
+                                    </Col>
+                                </Row>
+                            </CardBody>
+                        </Card>
+                    </Col>
+                </Row>
+            </>)
         )}
-    </BackgroundColorContext.Consumer>
-  );
+        </LanguageContext.Consumer>
+        </div>
+    );
 }
 
 export default Settings;

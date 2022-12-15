@@ -41,7 +41,7 @@
     background: $light-bg;
   }
 
-  h1, h2, h3, h4, h5, h6, p, ol li, ul li, pre {
+  h1, h2, h3, h4, h5, h6, p, ol li, ul li, pre{
     color: $black-states;
   }
 
@@ -153,6 +153,14 @@
   .btn.btn-link{
     &:hover,&:active, &:focus{
       color: $dark-gray !important;
+    }
+  }
+
+  .radio-option{
+    background-color: $gray-200;
+
+    &:hover{
+      background-color: $gray-400;
     }
   }
 
@@ -271,7 +279,7 @@
    .full-page{
      background: $light-bg;
 
-     h1, h2, h3, h4, h5, h6, p, ol li, ul li, pre {
+     h1, h2, h3, h4, h5, h6, p, ol li, ul li, pre{
        color: $black-states;
      }
 
