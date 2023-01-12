@@ -1,0 +1,43 @@
+{
+    "sidebar": {
+        "dashboard": "Контролна табла",
+        "profile": "Налог",
+        "settings": "Подешавања",
+        "logout": "Одјава"
+    },
+    "settings": {
+        "userSettings": {
+            "title": "Корисничка подешавања"
+        },
+        "websiteSettings": {
+            "title": "Подешавања странице",
+            "appearance": {
+                "title": "Изглед",
+                "theme": {
+                    "title": "Тема",
+                    "light": "Светла",
+                    "dark": "Тамна",
+                    "system": "Синхронизуј с рачунаром"
+                },
+                "accentColor": "Акцент Боја"
+            },
+            "notifications": {
+                "title": "Обавештења"
+            },
+            "language": {
+                "title": "Језик",
+                "selectLanguage": {
+                    "title": "Изабери језик",
+                    "de": "Немачки",
+                    "en": "Енглески",
+                    "sr": "Српски"
+                }
+            }
+        },
+        "billingSettings": {
+            "title": "Подешавања наплате",
+            "paymentMethods": "Начини плаћања",
+            "transactionHistory": "Историја трансакција"
+        }
+    }
+}

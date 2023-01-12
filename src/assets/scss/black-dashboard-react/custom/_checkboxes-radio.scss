@@ -152,3 +152,22 @@
 .form-check-radio input[type="radio"]:disabled + .form-check-sign::after {
   color: $dark-gray;
 }
+.color-select button{
+  padding: 20px;
+  border-radius: 50%;
+}
+.radio-option{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background-color: $gray-900;
+
+  &:hover,
+  input:hover{
+    cursor: pointer;
+    background-color: $gray-800;
+    transition: background-color .15s ease;
+  }
+}
