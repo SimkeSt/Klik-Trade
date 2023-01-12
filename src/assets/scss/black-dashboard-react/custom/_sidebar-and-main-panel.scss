@@ -18,7 +18,6 @@
 }
 .sidebar,
 .off-canvas-sidebar{
-  @include linear-gradient($primary-states, $primary);
   height: calc(100vh - 90px);
   width: 230px;
   position: fixed;
@@ -27,11 +26,12 @@
   z-index: 1;
   background-size: cover;
   background-position: center center;
+  background-color: $card-black-background;
   display: block;
   box-shadow: 0px 0px 45px 0px rgba(0,0,0,0.6);
   margin-top: 30px;
   margin-left: 20px;
-  border-radius: 5px;
+  border-radius: $card-border-radius;
 
   .sidebar-wrapper{
     width: $full-width;
@@ -153,7 +153,7 @@
 
       > a{
         margin: 10px 15px 0;
-        border-radius: $btn-round-radius;
+        border-radius: $card-border-radius;
         color: $white;
         display: block;
         text-decoration: none;
@@ -168,18 +168,6 @@
       &:first-child > a{
         margin: 0 15px;
 
-      }
-
-      &:hover:not(.active) > a,
-      &:focus:not(.active) > a{
-        p,i{
-          color: $white;
-        }
-      }
-
-      &:hover:not(.active) > a i,
-      &:focus:not(.active) > a i{
-        color: $white;
       }
 
       &.active > a:not([data-toggle="collapse"]){
@@ -276,14 +264,11 @@
 
     a.logo-mini{
       opacity: 1;
-      float: left;
-      width: 34px;
+      width: 100%;
       text-align: center;
-      margin-left: 12px;
-      margin-right: 12px;
       img {
-        border-radius: 50%;
-        width: 30px;
+        margin-top: 15px;
+        width: 144px;
       }
     }
 
@@ -301,28 +286,6 @@
       height: 1px;
       width: calc(100% - 30px);
       background: $opacity-5;
-    }
-
-    p{
-      float: left;
-      font-size: 20px;
-      margin: 10px 10px;
-      color: $white;
-      line-height: 20px;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    }
-
-    .simple-text{
-      text-transform: uppercase;
-      padding: $padding-base-vertical 0;
-      display: block;
-      white-space: nowrap;
-      // font-size: $font-size-base;
-      color: $white;
-      text-decoration: none;
-      font-weight: $font-weight-normal;
-      line-height: 30px;
-      overflow: hidden;
     }
   }
 
@@ -444,18 +407,6 @@
   background: linear-gradient($background-black, $background-states-black);
 
   @include transitions (0.50s, cubic-bezier(0.685, 0.0473, 0.346, 1));
-
-  // &[data="blue"]{
-  //   border-top: 2px solid $info;
-  // }
-
-  // &[data="green"]{
-  //   border-top: 2px solid $success;
-  // }
-
-  // &[data="primary"]{
-  //   border-top: 2px solid $primary;
-  // }
 
   > .content {
     padding: 30px 30px 30px 280px;
@@ -632,6 +583,10 @@
 
 .panel-header-lg{
   height: 380px
+}
+
+.nav-link-selected{
+  background-color: rgba($white, 15%);
 }
 
 @media screen and (max-width: 991px){

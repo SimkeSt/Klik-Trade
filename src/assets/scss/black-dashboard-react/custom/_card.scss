@@ -5,6 +5,7 @@
     width: 100%;
     margin-bottom: 30px;
     box-shadow: $box-shadow;
+    border-radius: $card-border-radius;
 
 
     label{
@@ -29,9 +30,34 @@
         font-weight: $font-weight-light;
         margin-bottom: .75rem;
       }
+      .title{
+        font-weight: 500;
+      }
+
+      .subtitle{
+        color: $light;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+      label{
+        font-weight: 500;
+
+        &:not(.radio-option){
+          text-transform: uppercase;
+          color: $light;
+        }
+      }
 
       .card-description, .card-category{
         color: rgba($white, 0.6);
+      }
+
+      .row{
+        margin-bottom: 15px;
+
+        .btn-secondary{
+          margin-right: 15px;
+        }
       }
 
     }
@@ -45,8 +71,9 @@
       color: rgba($white,0.8);
 
       .card-title{
-          color: $white;
-          font-weight: 100;
+        color: $light;
+        text-transform: uppercase;
+        font-weight: 500;
       }
 
       .card-category{
@@ -220,6 +247,11 @@
 
 .card-body{
   padding: $card-spacer-y;
+}
+.tooltip{
+  .tooltip-inner{
+    background-color: red;
+  }
 }
 
 @include media-breakpoint-down(sm) {

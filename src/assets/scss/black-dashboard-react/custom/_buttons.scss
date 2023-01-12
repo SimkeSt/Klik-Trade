@@ -12,8 +12,7 @@
 
     &:hover,
     &:focus{
-        @include opacity(1);
-        outline: 0 !important;
+      background: red;
     }
     &:active,
     &.active,
@@ -103,12 +102,28 @@
 
 // Apply the mixin to the buttons
 // .btn-default { @include btn-styles($default-color, $default-states-color); }
-.btn-primary { @include btn-styles($primary, $primary-states);
+.btn-primary {
+   background: rgba($primary, 75%);
+   font-weight: 500;
+  &:hover{
+    background: rgba($primary, 50%) !important;
+  }
+}
+.btn-secondary{
+  background: rgba($dark, 75%);
+  font-weight: 500;
+  &:hover{
+    background: rgba($dark, 50%) !important;
+  }
+}
 
-              }
-.btn-success { @include btn-styles($success, $success-states);
-
-              }
+.btn-success{
+  background: rgba($success, 75%);
+  font-weight: 500;
+  &:hover{
+    background: rgba($success, 50%) !important;
+  }
+}
 .btn-info    { @include btn-styles($info, $info-states);
 
               }
@@ -117,9 +132,13 @@
                   color: $white;
                 }
               }
-.btn-danger  { @include btn-styles($danger, $danger-states);
-
-              }
+.btn-danger{
+  background: rgba($danger, 75%);
+  font-weight: 500;
+  &:hover{
+    background: rgba($danger, 50%) !important;
+  }
+}
 .btn-neutral { @include btn-styles($white, $white); }
 
 .btn{

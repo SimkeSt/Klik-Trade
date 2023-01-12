@@ -16,111 +16,66 @@
 
 */
 import React from "react";
-import { Route, Switch, Redirect, useLocation } from "react-router-dom";
-// javascript plugin used to create scrollbars on windows
-import PerfectScrollbar from "perfect-scrollbar";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 // core components
-// import Footer from "components/Footer/Footer.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
+
+import { AppearanceContext } from "contexts/AppearanceContext";
 
 import routes from "routes.js";
 
-import logo from "assets/img/react-logo.png";
+export default function Admin(props) {
+    const mainPanelRef = React.useRef(null);
 
-var ps;
+    const [sidebarOpened, setsidebarOpened] = React.useState(
+        document.documentElement.className.indexOf("nav-open") !== -1
+    );
 
-function Admin(props) {
-  const location = useLocation();
-  const mainPanelRef = React.useRef(null);
-  const [sidebarOpened, setsidebarOpened] = React.useState(
-    document.documentElement.className.indexOf("nav-open") !== -1
-  );
-  React.useEffect(() => {
-    if (navigator.platform.indexOf("Win") > -1) {
-      document.documentElement.className += " perfect-scrollbar-on";
-      document.documentElement.classList.remove("perfect-scrollbar-off");
-      ps = new PerfectScrollbar(mainPanelRef.current, {
-        suppressScrollX: true
-      });
-      let tables = document.querySelectorAll(".table-responsive");
-      for (let i = 0; i < tables.length; i++) {
-        ps = new PerfectScrollbar(tables[i]);
-      }
-    }
-    // Specify how to clean up after this effect:
-    return function cleanup() {
-      if (navigator.platform.indexOf("Win") > -1) {
-        ps.destroy();
-        document.documentElement.classList.add("perfect-scrollbar-off");
-        document.documentElement.classList.remove("perfect-scrollbar-on");
-      }
+    const [selectedLink, setSelectedLink] = React.useState(-1);
+
+    // this function opens and closes the sidebar on small devices
+    const toggleSidebar = (linkIndex) => {
+        document.querySelectorAll(".nav-link").forEach((link, key) => {
+            if(key !== linkIndex) link.classList.remove("nav-link-selected");
+
+            else{ 
+                document.getElementsByClassName("nav-link")[linkIndex].classList.add("nav-link-selected");
+                setSelectedLink(key);
+            }
+        });
+        document.documentElement.classList.toggle("nav-open");
+        setsidebarOpened(!sidebarOpened);
     };
-  });
-  React.useEffect(() => {
-    if (navigator.platform.indexOf("Win") > -1) {
-      let tables = document.querySelectorAll(".table-responsive");
-      for (let i = 0; i < tables.length; i++) {
-        ps = new PerfectScrollbar(tables[i]);
-      }
-    }
-    document.documentElement.scrollTop = 0;
-    document.scrollingElement.scrollTop = 0;
-    if (mainPanelRef.current) {
-      mainPanelRef.current.scrollTop = 0;
-    }
-  }, [location]);
-  // this function opens and closes the sidebar on small devices
-  const toggleSidebar = () => {
-    document.documentElement.classList.toggle("nav-open");
-    setsidebarOpened(!sidebarOpened);
-  };
-  const getRoutes = (routes) => {
-    return routes.map((prop, key) => {
-      if (prop.layout === "/admin") {
-        return (
-          <Route
-            path={prop.layout + prop.path}
-            component={prop.component}
-            key={key}
-          />
-        );
-      } else {
-        return null;
-      }
-    });
-  };
-  const getBrandText = (path) => {
-    for (let i = 0; i < routes.length; i++) {
-      if (location.pathname.indexOf(routes[i].layout + routes[i].path) !== -1) {
-        return routes[i].name;
-      }
-    }
-    return "Brand";
-  };
-  return (
-    <React.Fragment>
-        <div className="wrapper">
-        <Sidebar
-            routes={routes}
-            logo={{
-            outterLink: "/",
-            text: "Klik-Trade",
-            imgSrc: logo 
-            }}
-            toggleSidebar={toggleSidebar}
-        />
-        <div className="main-panel" ref={mainPanelRef} data={"blue"}>
-            <Switch>
-            {getRoutes(routes)}
-            <Redirect from="*" to="/admin/dashboard" />
-            </Switch>
-            {/* <Footer fluid /> */}
-        </div>
-        </div>
-        {/* <FixedPlugin bgColor={color} handleBgClick={changeColor} /> */}
-    </React.Fragment>
-  );
-}
 
-export default Admin;
+    const getRoutes = (routes) => {
+        return routes.map((prop, key) => {
+            if(prop.layout !== "/admin") return null;
+
+            return(
+                <Route
+                    path={prop.layout + prop.path}
+                    component={prop.component}
+                    key={key}
+                />
+            );
+        });
+    };
+    return(
+        <React.Fragment>
+            <div className="wrapper">
+                <Sidebar
+                    routes={routes}
+                    toggleSidebar={toggleSidebar}
+                    selectedLink={selectedLink}
+                />
+                <div className="main-panel" ref={mainPanelRef} data={"blue"}>
+                    <Switch>
+                        {getRoutes(routes)}
+                        <Redirect from="*" to="/admin/dashboard" />
+                    </Switch>
+                </div>
+            </div>
+        </React.Fragment>
+    );
+}

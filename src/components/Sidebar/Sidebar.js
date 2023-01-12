@@ -21,138 +21,75 @@ import { NavLink, Link, useLocation } from "react-router-dom";
 // nodejs library to set properties for components
 import { PropTypes } from "prop-types";
 
-// javascript plugin used to create scrollbars on windows
-import PerfectScrollbar from "perfect-scrollbar";
-
 // reactstrap components
 import { Nav, NavLink as ReactstrapNavLink } from "reactstrap";
 
+import { AppearanceContext } from "contexts/AppearanceContext";
 import { LanguageContext } from "../../contexts/LanguageContext";
 
-import{
-    AppearanceContext,
-    colors
-  } from "contexts/AppearanceContext";
+import logo_dark from "../../assets/img/klik-trade-logo_dark.png";
+import logo_white from "../../assets/img/klik-trade-logo_white.png";
 
 var ps;
 
-function Sidebar(props) {
+export default function Sidebar(props) {
+    const logo = {
+        dark: logo_dark,
+        white: logo_white
+    }
     const location = useLocation();
     const sidebarRef = React.useRef(null);
     // verifies if routeName is the one active (in browser input)
     const activeRoute = (routeName) => {
         return location.pathname === routeName ? "active" : "";
     };
-    React.useEffect(() => {
-    if (navigator.platform.indexOf("Win") > -1) {
-        ps = new PerfectScrollbar(sidebarRef.current, {
-        suppressScrollX: true,
-        suppressScrollY: false
-        });
-    }
-    // Specify how to clean up after this effect:
-    return function cleanup() {
-        if (navigator.platform.indexOf("Win") > -1) {
-        ps.destroy();
-        }
-    };
-    });
     const linkOnClick = () => {
         document.documentElement.classList.remove("nav-open");
     };
-    const { routes, logo } = props;
-    let logoImg = null;
-    let logoText = null;
-    if (logo !== undefined) {
-        if (logo.outterLink !== undefined) {
-            logoImg = (
-            <a
-                href={logo.outterLink}
-                className="simple-text logo-mini"
-                target="_blank"
-                onClick={props.toggleSidebar}
-            >
-                <div className="logo-img">
-                <img src={logo.imgSrc} alt="react-logo" />
-                </div>
-            </a>
-            );
-            logoText = (
-            <a
-                href={logo.outterLink}
-                className="simple-text logo-normal"
-                target="_blank"
-                onClick={props.toggleSidebar}
-            >
-                {logo.text}
-            </a>
-            );
-        } else {
-            logoImg = (
-            <Link
-                to={logo.innerLink}
-                className="simple-text logo-mini"
-                onClick={props.toggleSidebar}
-            >
-                <div className="logo-img">
-                <img src={logo.imgSrc} alt="react-logo" />
-                </div>
-            </Link>
-            );
-            logoText = (
-            <Link
-                to={logo.innerLink}
-                className="simple-text logo-normal"
-                onClick={props.toggleSidebar}
-            >
-                {logo.text}
-            </Link>
-            );
-        }
-    }
+    const { routes } = props;
+
     return(
-        <AppearanceContext.Consumer>
-        {({ color }) => (
-            <div className="sidebar" data={color}>
-                <div className="sidebar-wrapper" ref={sidebarRef}>
-                {logoImg !== null || logoText !== null ? (
-                    <div className="logo">
-                        {logoImg}
-                        {logoText}
-                    </div>
-                ) : null}
+        <div className="sidebar">
+            <div className="sidebar-wrapper" ref={sidebarRef}>
+                <div className="logo">
+                    <a className="simple-text logo-mini" href="/" target="_blank" onClick={props.toggleSidebar}>
+                        <div className="logo-img">
+                            <AppearanceContext.Consumer>
+                            {({ theme })=> (
+                                <img src={theme === "dark" ? logo.dark : logo.white} alt="klik-trade-logo" draggable={false} />
+                            )}    
+                            </AppearanceContext.Consumer>
+                        </div>
+                    </a>
+                </div>
                 <Nav>
                     {routes.map((prop, key) => {
-                    if (prop.redirect) return null;
-                    return (
-                        <li
-                        className={
-                            activeRoute(prop.path) + (prop.pro ? " active-pro" : "")
-                        }
-                        key={key}
-                        >
-                        <NavLink
-                            to={prop.layout + prop.path}
-                            className="nav-link"
-                            activeClassName="active"
-                            onClick={props.toggleSidebar}
-                        >
-                            <i className={prop.icon} />
-                            <LanguageContext.Consumer>
-                            {({ content }) => (
-                                <p>{content?.sidebar?.[`${prop.name}`]}</p>
-                            )}
-                            </LanguageContext.Consumer>
-                        </NavLink>
-                        </li>
-                    );
+                        if(prop.redirect) return null;
+                        
+                        return(
+                            <li key={key}>
+                                <NavLink
+                                    to={prop.layout + prop.path}
+                                    className={"nav-link" + (key === props.selectedLink ? " nav-link-selected" : "")}
+                                    activeClassName="active"
+                                    onClick={()=>props.toggleSidebar(key)}
+                                >
+                                    <i className={prop.icon} />
+                                    <LanguageContext.Consumer>
+                                    {({ content }) => (
+                                        <p>{content?.sidebar?.[`${prop.name}`]}</p>
+                                    )}
+                                    </LanguageContext.Consumer>
+                                </NavLink>
+                            </li>
+                        );
                     })}
                     <li className="active-pro">
                         <LanguageContext.Consumer>
-                        { ({ content }) =>(
+                        {({ content }) =>(
                             <>
-                                <ReactstrapNavLink>
-                                    <i className="tim-icons icon-button-power" />
+                                <ReactstrapNavLink href="/logout">
+                                    <i className="fa-solid fa-right-from-bracket"/>
                                     <p>{content?.sidebar?.logout}</p>
                                 </ReactstrapNavLink>
                             </>
@@ -160,27 +97,20 @@ function Sidebar(props) {
                         </LanguageContext.Consumer>
                     </li>
                 </Nav>
-                </div>
             </div>
-        )}
-        </AppearanceContext.Consumer>
+        </div>
     );
 }
 
 Sidebar.propTypes = {
-  routes: PropTypes.arrayOf(PropTypes.object),
-  logo: PropTypes.shape({
-    // innerLink is for links that will direct the user within the app
-    // it will be rendered as <Link to="...">...</Link> tag
-    innerLink: PropTypes.string,
-    // outterLink is for links that will direct the user outside the app
-    // it will be rendered as simple <a href="...">...</a> tag
-    outterLink: PropTypes.string,
-    // the text of the logo
-    text: PropTypes.node,
-    // the image src of the logo
-    imgSrc: PropTypes.string
-  })
+    routes: PropTypes.arrayOf(PropTypes.object),
+    logo: PropTypes.shape({
+        // innerLink is for links that will direct the user within the app
+        // it will be rendered as <Link to="...">...</Link> tag
+        innerLink: PropTypes.string,
+        // the text of the logo
+        text: PropTypes.node,
+        // the image src of the logo
+        imgSrc: PropTypes.string
+    })
 };
-
-export default Sidebar;

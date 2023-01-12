@@ -4,17 +4,11 @@ import { getCookie, setCookie } from "../../cookieParser";
 
 export default function ThemeContextWrapper(props) {
     const [theme, setTheme] = useState(getCookie("theme"));
-    const [color, setColor] = useState(getCookie("color"));
 
     function changeTheme(theme){
         setTheme(theme);
         setCookie("theme", theme);
     }
-    function changeColor(color){
-        setColor(color);
-        setCookie("color", color);
-    }
-
     useEffect(() => {
         switch(theme){
             case themes.light:
@@ -32,7 +26,7 @@ export default function ThemeContextWrapper(props) {
     }, [theme]);
 
     return(
-        <AppearanceContext.Provider value={{theme: theme, color: color, changeTheme: changeTheme, changeColor: changeColor}}>
+        <AppearanceContext.Provider value={{theme: theme, changeTheme: changeTheme}}>
             {props.children}
         </AppearanceContext.Provider>
     );
