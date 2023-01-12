@@ -97,12 +97,12 @@ $default-color-opacity:      rgba(182, 182, 182, .6) !default;
 $orange-color:               #f96332 !default;
 
 $default:       #344675 !default;
-$primary:       #e14eca !default;
-$secondary:     #f4f5f7 !default;
-$success:       #00f2c3 !default;
+$primary:       #61DAFB !default;
+$secondary:     $gray-600 !default;
+$success:       #00e147 !default;
 $info:          #1d8cf8 !default;
-$warning:       #ff8d72 !default;
-$danger:        #fd5d93 !default;
+$warning:       #ffc428 !default;
+$danger:        #ff274f !default;
 $black:         #222a42 !default;
 
 
@@ -139,7 +139,7 @@ $active-blue:                #00bbff !default;
 
 
 $light:         $gray-500 !default;
-$dark:          $gray-900 !default;
+$dark:          $gray-600 !default;
 $darker:        darken($gray-900, 15%) !default;
 
 $facebook:              #3b5998 !default;
@@ -335,7 +335,7 @@ $border-color:                $gray-200 !default;
 $border-radius:               .25rem !default;
 $border-radius-xl:            0.875rem !default;
 $border-radius-lg:            0.4285rem !default;
-$border-radius-sm:            0.2857rem !default;
+$border-radius-sm:            10px !default;
 $border-radius-xs:            0.1428rem !default;
 
 $margin-bottom:                 10px        !default;
@@ -376,8 +376,8 @@ $general-transition-time:     300ms             !default;
 
 // Fonts
 
-$font-family-base:            'Poppins', sans-serif !default;
-$font-family-alt:             'Poppins', sans-serif !default;
+$font-family-base:            'Ubuntu', sans-serif !default;
+$font-family-alt:             'Ubuntu', sans-serif !default;
 
 $font-size-dash:              .875rem !default;
 
@@ -577,7 +577,7 @@ $input-border-radius-xl:                $border-radius-xl !default;
 $input-border-radius-lg:                $border-radius-lg !default;
 $input-border-radius-sm:                $border-radius-sm !default;
 
-$input-bg:                              $transparent-bg !default;
+$input-bg:                              rgba(0, 0, 0, 20%) !default;
 $input-disabled-bg:                     $gray-200 !default;
 
 $input-muted-bg:                        #EDF0F5 !default;

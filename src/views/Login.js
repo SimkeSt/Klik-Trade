@@ -1,56 +1,108 @@
 import React from 'react';
-import {
-  MDBBtn,
-  MDBContainer,
-  MDBCard,
-  MDBCardBody,
-  MDBCardImage,
-  MDBRow,
-  MDBCol,
-  MDBIcon,
-  MDBInput
-}
-from 'mdb-react-ui-kit';
 
-export default function Login() {
-  return (
-    <MDBContainer className="my-5">
+import{
+    Button,
+    Container,
+    Card,
+    CardFooter,
+    CardBody,
+    Row,
+    Col,
+    Input,
+    Label,
+} from 'reactstrap';
 
-      <MDBCard>
-        <MDBRow className='g-0'>
+import NavBar from "components/Navbar";
 
-          <MDBCol md='6'>
-            <MDBCardImage src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp' alt="login form" className='rounded-start w-100'/>
-          </MDBCol>
+import { AppearanceContext } from "contexts/AppearanceContext";
 
-          <MDBCol md='6'>
-            <MDBCardBody className='d-flex flex-column'>
+import logo_dark from "../assets/img/klik-trade-logo_dark.png";
+import logo_white from "../assets/img/klik-trade-logo_white.png";
 
-              <div className='d-flex flex-row mt-2'>
-                <MDBIcon fas icon="cubes fa-3x me-3" style={{ color: '#ff6219' }}/>
-                <span className="h1 fw-bold mb-0">Logo</span>
-              </div>
+export default function Login(){
+    const logo = {
+        dark: logo_dark,
+        white: logo_white
+    }
 
-              <h5 className="fw-normal my-4 pb-3" style={{letterSpacing: '1px'}}>Sign into your account</h5>
-
-                <MDBInput wrapperClass='mb-4' label='Email address' id='formControlLg' type='email' size="lg"/>
-                <MDBInput wrapperClass='mb-4' label='Password' id='formControlLg' type='password' size="lg"/>
-
-              <MDBBtn className="mb-4 px-5" color='dark' size='lg'>Login</MDBBtn>
-              <a className="small text-muted" href="#!">Forgot password?</a>
-              <p className="mb-5 pb-lg-2" style={{color: '#393f81'}}>Don't have an account? <a href="#!" style={{color: '#393f81'}}>Register here</a></p>
-
-              <div className='d-flex flex-row justify-content-start'>
-                <a href="#!" className="small text-muted me-1">Terms of use.</a>
-                <a href="#!" className="small text-muted">Privacy policy</a>
-              </div>
-
-            </MDBCardBody>
-          </MDBCol>
-
-        </MDBRow>
-      </MDBCard>
-
-    </MDBContainer>
-  );
+    const [login, setLogin] = React.useState(true);
+    
+    const toggleLogin = () => setLogin(!login);
+  return(<>
+    {/* <div className="logo">
+        <a className="simple-text logo-mini" href="/" target="_blank">
+            <div className="logo-img">
+                <AppearanceContext.Consumer>
+                {({ theme })=> (
+                    <img src={theme === "dark" ? logo.dark : logo.white} alt="klik-trade-logo" draggable={false} />
+                )}    
+                </AppearanceContext.Consumer>
+            </div>
+        </a>
+    </div> */}
+    <Container className="px-4 py-5 px-md-5 text-lg-start my-5">
+        <Row className="d-flex justify-content-center align-items-center gx-lg-5 mb-5">
+            <Col md="4" className="text-center">
+                <h1 className="my-5 display-5 fw-bold ls-tight" style={{color: "hsl(218, 81%, 95%)"}}>
+                    The best offer <br/><span style={{color: "hsl(218, 81%, 75%)"}}>for your business</span>
+                </h1>
+                <p className="mb-4 opacity-70" style={{color: "hsl(218, 81%, 85%)"}}>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Temporibus, expedita iusto veniam atque, magni tempora mollitia
+                dolorum consequatur nulla, neque debitis eos reprehenderit quasi
+                ab ipsum nisi dolorem modi. Quos?
+                </p>
+            </Col>
+            <Col md="6">
+                <Card>
+                    <CardBody className='d-flex flex-column'>
+                        <h3 className="title text-center" style={{letterSpacing: '1px'}}>{login && "Login to your account" || "Create your account"}</h3>
+                        {!login && 
+                        <Row>
+                            <Col>
+                                <Label>First name</Label>
+                                <Input type="text" />
+                            </Col>
+                            <Col>
+                                <Label>Last name</Label>
+                                <Input type="text" />
+                            </Col>
+                        </Row>
+                        }
+                        <Row>
+                            <Col>
+                                <Label>Email address</Label>
+                                <Input type="text" />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <Label>Password</Label>
+                                <Input type="text" />
+                            </Col>
+                        </Row>
+                        {!login && 
+                        <Row>
+                        <Col>
+                            <Label>Repeat password</Label>
+                            <Input type="text" />
+                        </Col>
+                        </Row>}
+                        {login && <a className="mb-3 large text-muted ml-0" href="#!">Forgot password?</a>}
+                        <Button color="primary">{login && "Login" || "Register"}</Button>
+                    </CardBody>
+                    <CardFooter>
+                        <p className="d-flex flex-column justify-content-center align-items-center mb-4 pb-lg-2">{login ? "Don't have an account?" : "Already have an account?"}
+                            <span className="text-muted" style={{cursor: "pointer"}} onClick={toggleLogin}>{" "}{login ? "Register here" : "Login"}</span>
+                        </p>
+                        <div className="d-flex flex-row justify-content-around">
+                            <a href="#!" className="small text-muted me-1">Terms of use.</a>
+                            <a href="#!" className="small text-muted">Privacy policy</a>
+                        </div>
+                    </CardFooter>
+                </Card>
+            </Col>
+        </Row>
+    </Container>
+    </>);
 }

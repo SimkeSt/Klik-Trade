@@ -1,7 +1,7 @@
 {
     "sidebar": {
         "dashboard": "Dashboard",
-        "profile": "Account",
+        "account": "Account",
         "settings": "Settings",
         "logout": "Log out"
     },

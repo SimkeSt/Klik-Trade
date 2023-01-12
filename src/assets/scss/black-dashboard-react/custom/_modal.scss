@@ -3,6 +3,8 @@
 // --------------------------------------------------
 .modal-content {
   border: 0;
+  background-color: $card-black-background;
+  color: $white; 
 
   // Modal header
   // Top section of the modal w/ title and dismiss
@@ -19,13 +21,13 @@
         margin: -1rem -1rem -1rem auto;
     }
     .title{
-        color: $black;
+        color: $white;
         margin-top: 5px;
         margin-bottom: 0;
     }
 
     .modal-title{
-      color: $black;
+      color: $white;
     }
 
     i.tim-icons {
@@ -39,6 +41,14 @@
   .modal-body {
     line-height: 1.9;
 
+    .row{
+      margin-bottom: 15px;
+    }
+    label{
+      text-transform: uppercase;
+      font-weight: 500;
+      color: $light;
+    }
     p{
       color: $black;
     }
@@ -48,6 +58,7 @@
     border-top: 0;
     -webkit-justify-content: space-between; /* Safari 6.1+ */
     justify-content: space-between;
+    background: rgba(0, 0, 0, 10%) !important;
 
     button {
       margin: 0;
@@ -62,6 +73,14 @@
         left: -5px;
       }
     }
+    p{
+      color: $light;
+      
+      &:hover{
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
 
   }
   .modal-body + .modal-footer {
@@ -69,11 +88,11 @@
   }
 }
 .modal-backdrop {
-  background: rgba(0,0,0,0.3);
+  background-color: black;
+  opacity: 75% !important;
 }
 
 .modal{
-
     &.modal-default{
         @include modal-colors($white, $black);
     }
@@ -99,8 +118,12 @@
     }
 
     .modal-header .close{
-        color: $danger;
+        padding: 0;
+        padding-right: 5px;
+        color: $white;
         text-shadow: none;
+        font-size: 40px;
+        font-weight: normal;
 
         &:hover,
         &:focus{
@@ -150,8 +173,9 @@
   }
 
   .modal-header .close{
+    position: relative;
     color: $dark-background;
-    top: 30px !important;
+    top: 55px !important;
   }
 
   .modal-footer{

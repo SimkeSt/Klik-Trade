@@ -44,6 +44,11 @@
   transition: opacity 0.3s linear;
 }
 
+.form-check .input[type="text"]{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .form-check input[type="checkbox"]:checked + .form-check-sign::before,
 .form-check input[type="checkbox"]:checked + .form-check-sign::before{
   border: none;
@@ -162,12 +167,13 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 0.75rem;
-  background-color: $gray-900;
+  background-color: rgba(0, 0, 0, 10%);
+  border-radius: $card-border-radius;
 
   &:hover,
   input:hover{
     cursor: pointer;
-    background-color: $gray-800;
+    background-color: rgba(0, 0, 0, 20%);
     transition: background-color .15s ease;
   }
 }

@@ -1,7 +1,7 @@
 {
     "sidebar": {
         "dashboard": "Контролна табла",
-        "profile": "Налог",
+        "account": "Налог",
         "settings": "Подешавања",
         "logout": "Одјава"
     },
