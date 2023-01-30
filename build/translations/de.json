@@ -1,0 +1,43 @@
+{
+    "sidebar": {
+        "dashboard": "Dashboard",
+        "account": "Konto",
+        "settings": "Einstellungen",
+        "logout": "Abmelden"
+    },
+    "settings": {
+        "userSettings": {
+            "title": "Benutzereinstellungen"
+        },
+        "websiteSettings": {
+            "title": "Website-Einstellungen",
+            "appearance": {
+                "title": "Erscheinungsbild",
+                "theme": {
+                    "title": "Thema",
+                    "light": "Licht",
+                    "dark": "Hell",
+                    "system": "Mit Computer synchronisieren"
+                },
+                "accentColor": "Akzentfarbe"
+            },
+            "notifications": {
+                "title": "Benachrichtigungen"
+            },
+            "language": {
+                "title": "Sprache",
+                "selectLanguage": {
+                    "title": "Sprache auswählen",
+                    "de": "Deutsch",
+                    "en": "Englisch",
+                    "sr": "Serbisch"
+                }
+            }
+        },
+        "billingSettings": {
+            "title": "Rechnungseinstellungen",
+            "paymentMethods": "Zahlungsarten",
+            "transactionHistory": "Transaktionsverlauf"
+        }
+    }
+}
