@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/black-dashboard-react/static/css/main.d9a3a1fd.css",
+    "main.js": "/black-dashboard-react/static/js/main.c8fa0eb2.js",
+    "static/media/fa-solid-900.ttf": "/black-dashboard-react/static/media/fa-solid-900.e615bbcb258550973c16.ttf",
+    "static/media/ss1.png": "/black-dashboard-react/static/media/ss1.00e66cade587cfcac128.png",
+    "static/media/fa-brands-400.ttf": "/black-dashboard-react/static/media/fa-brands-400.b823fc0dbb5a5f0c21bb.ttf",
+    "static/media/fa-solid-900.woff2": "/black-dashboard-react/static/media/fa-solid-900.59edf72a325ac2048d60.woff2",
+    "static/media/affiliate.png": "/black-dashboard-react/static/media/affiliate.076ec584a338cefbf186.png",
+    "static/media/fa-brands-400.woff2": "/black-dashboard-react/static/media/fa-brands-400.ebb7a127d2d8ee6f1832.woff2",
+    "static/media/fa-regular-400.ttf": "/black-dashboard-react/static/media/fa-regular-400.0d03b1bbd1d62c1e1284.ttf",
+    "static/media/nucleo.eot": "/black-dashboard-react/static/media/nucleo.bd5cce8bf40be5947637.eot",
+    "static/media/nucleo.ttf": "/black-dashboard-react/static/media/nucleo.35b08447277ca7bf9f09.ttf",
+    "static/media/fa-regular-400.woff2": "/black-dashboard-react/static/media/fa-regular-400.0caf4c6cf244a90efcc5.woff2",
+    "static/media/klik-trade-logo_white.png": "/black-dashboard-react/static/media/klik-trade-logo_white.6317f1a93b7ef954c7c9.png",
+    "static/media/klik-trade-logo_dark.png": "/black-dashboard-react/static/media/klik-trade-logo_dark.137bbd243379bb1bae2a.png",
+    "static/media/nucleo.woff": "/black-dashboard-react/static/media/nucleo.5c65ef4d6434bb8062a3.woff",
+    "static/media/nucleo.woff2": "/black-dashboard-react/static/media/nucleo.6dfb4833e3a0132fd1fc.woff2",
+    "static/media/fa-v4compatibility.ttf": "/black-dashboard-react/static/media/fa-v4compatibility.4baccb548138840fa33a.ttf",
+    "static/media/fa-v4compatibility.woff2": "/black-dashboard-react/static/media/fa-v4compatibility.afac89562a5301459069.woff2",
+    "index.html": "/black-dashboard-react/index.html",
+    "main.d9a3a1fd.css.map": "/black-dashboard-react/static/css/main.d9a3a1fd.css.map",
+    "main.c8fa0eb2.js.map": "/black-dashboard-react/static/js/main.c8fa0eb2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d9a3a1fd.css",
+    "static/js/main.c8fa0eb2.js"
+  ]
+}
