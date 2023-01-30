@@ -16,10 +16,10 @@
 
 */
 import React from "react";
+import { Helmet } from "react-helmet";
 import classNames from "classnames";
 // react plugin used to create charts
 import { Bar } from "react-chartjs-2";
-import { AppearanceContext } from "contexts/AppearanceContext";
 
 // reactstrap components
 import {
@@ -103,35 +103,37 @@ export default function Dashboard(props) {
             },
             responsive: true,
             scales: {
-                yAxes: [{
-                    type: "time",
-                    gridLines: {
+                y: {
+                    grid: {
                         drawBorder: false,
-                        color: "rgba(225,78,202,0.1)",
+                        color: "rgba(255, 255, 255, 0.2)",
                         zeroLineColor: "transparent"
                     },
                     ticks: {
                         suggestedMin: 60,
                         suggestedMax: 120,
                         padding: 20,
-                        fontColor: "#9e9e9e"
+                        color: "#9e9e9e"
                     }
-                }],
-                xAxes: [{
-                    gridLines: {
+                },
+                x: {
+                    grid: {
                         drawBorder: false,
-                        color: "rgba(225,78,202,0.1)",
+                        color: "rgba(255, 255, 255, 0.2)",
                         zeroLineColor: "transparent"
                     },
                     ticks: {
                         padding: 20,
-                        fontColor: "#9e9e9e"
+                        color: "#9e9e9e"
                     }
-                }]
+                }
             }
         }
     }
     return(<>
+        <Helmet>
+            <title>Dashboard | Klik-Trade</title>
+        </Helmet>
         <div className="content">
             <Card className="card-chart">
                 <CardHeader>

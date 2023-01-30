@@ -19,9 +19,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
-import  Landing from "views/Landing.js";
 import AdminLayout from "layouts/Admin/Admin.js";
+import Landing from "views/Landing.js";
 import Login from "views/Login.js";
+import TermsConditions from "views/TermsConditions";
 
 import "assets/scss/black-dashboard-react.scss";
 import "assets/demo/demo.css";
@@ -40,7 +41,8 @@ root.render(
                 <Switch>
                     <Route path="/landing" component={Landing} />
                     <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
-                    <Route path="/login" component={Login}/>
+                    <Route path={["/login", "/register"]} component={Login} />
+                    <Route path="/terms-and-conditions" component={TermsConditions} />
                     <Redirect from="/" to="/admin/dashboard" />
                 </Switch>
             </BrowserRouter>

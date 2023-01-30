@@ -103,25 +103,25 @@
 // Apply the mixin to the buttons
 // .btn-default { @include btn-styles($default-color, $default-states-color); }
 .btn-primary {
-   background: rgba($primary, 75%);
+   background: $primary;
    font-weight: 500;
   &:hover{
-    background: rgba($primary, 50%) !important;
+    background: rgba($primary, 75%) !important;
   }
 }
 .btn-secondary{
-  background: rgba($dark, 75%);
+  background: $secondary;
   font-weight: 500;
   &:hover{
-    background: rgba($dark, 50%) !important;
+    background: rgba($secondary, 75%) !important;
   }
 }
 
 .btn-success{
-  background: rgba($success, 75%);
+  background: $success;
   font-weight: 500;
   &:hover{
-    background: rgba($success, 50%) !important;
+    background: rgba($success, 75%) !important;
   }
 }
 .btn-info    { @include btn-styles($info, $info-states);
@@ -133,10 +133,10 @@
                 }
               }
 .btn-danger{
-  background: rgba($danger, 75%);
+  background: $danger;
   font-weight: 500;
   &:hover{
-    background: rgba($danger, 50%) !important;
+    background: rgba($danger, 75%) !important;
   }
 }
 .btn-neutral { @include btn-styles($white, $white); }
@@ -148,6 +148,7 @@
         @include opacity(.5);
         pointer-events: none;
     }
+    transition: .25s ease;
 }
 .btn-simple{
     border: $border;
@@ -166,7 +167,6 @@
         &,
         &:hover,
         &:focus,
-        &.focus,
         &:active,
         &.active {
             background: $transparent-bg;
@@ -182,7 +182,7 @@
     box-shadow: none;
     padding: $padding-base-vertical $padding-base-horizontal;
     background: $transparent-bg;
-    color: $gray-300;
+    color: $light !important;
     font-weight: $font-weight-bold;
 
   &:hover {
