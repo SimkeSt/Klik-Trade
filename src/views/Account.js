@@ -16,6 +16,7 @@
 
 */
 import React from "react";
+import { Helmet } from "react-helmet";
 
 // reactstrap components
 import{
@@ -41,6 +42,9 @@ export default function Account() {
     const toggleModal = () => setModal(!modal);
 
     return(<>
+    <Helmet>
+        <title>Account | Klik-Trade</title>
+    </Helmet>
         <div className="content">
             <Card className="card-user">
                 <CardBody>
@@ -53,8 +57,9 @@ export default function Account() {
                 </div>
                 <div className="card-description">
                     <div className="text-center">
-                        <Label>Balance</Label>
-                        <h3 className="title">$0</h3>
+                        <h3 className="mb-5">Good afternoon, Matevž</h3>
+                        <Label>Your balance</Label>
+                        <h1 className="title">$1346</h1>
                     </div>
                 </div>
                 </CardBody>

@@ -16,6 +16,7 @@
 
 */
 import React from "react";
+import { Helmet } from "react-helmet";
 
 // reactstrap components
 import {
@@ -84,7 +85,10 @@ export default function Settings(props) {
     const toggleCard = () => setCardModal(!cardModal);
     const togglePayPal = () => setPayPalModal(!payPalModal);
 
-    return(
+    return(<>
+        <Helmet>
+            <title>Settings | Klik-Trade</title>
+        </Helmet>
         <div className="content">
         <LanguageContext.Consumer>
         {({ content, changeLanguage }) => (
@@ -237,27 +241,20 @@ export default function Settings(props) {
                     </Col>
                 </Row>
                 <Modal isOpen={modal} toggle={toggleModal} keyboard={true}>
-                    <ModalHeader toggle={toggleModal}>
-                        {nameModal ? (<>
-                            <h4 className="title">Change your username</h4>
-                        </>) : mailModal ? (<>
-                            <h4 className="title">Change your email</h4>
-                        </>) : phoneModal ? (<>
-                            <h4 className="title">Change your phone number</h4>
-                        </>) : passModal ? (<>
-                            <h4 className="title">Update your password</h4>
-                        </>) : deleteModal ? (<>
-                            <h4 className="title">Delete account</h4>
-                        </>) : (<>
-                            <h4 className="title">ADD A NEW PAYMENT METHOD</h4>
-                        </>)}
+                    <ModalHeader className="modal-title" toggle={toggleModal}>
+                        {nameModal ? "Change your username"
+                        : mailModal ? "Change your email" 
+                        : phoneModal ? "Change your phone number" 
+                        : passModal ? "Update your password"
+                        : deleteModal ? "Delete account"
+                        : "Add a new payment method"}
                     </ModalHeader>
                     <ModalBody>
                         {nameModal ? (<>
                             <Row>
                                 <Col>
                                     <Label>Username</Label>
-                                    <Input type="text" value="velickovicdj" />
+                                    <Input type="text" defaultValue="velickovicdj" />
                                 </Col>
                             </Row>
                             <Row>
@@ -378,5 +375,5 @@ export default function Settings(props) {
         )}
         </LanguageContext.Consumer>
         </div>
-    );
+    </>);
 }

@@ -8,28 +8,28 @@
       transition:0.3s ease-in-out;
     }
 
-    &:hover,
-    &:focus,
-    &:active,
-    &.active,
-    &:active:focus,
-    &:active:hover,
-    &.active:focus,
-    &.active:hover
-     {
-        background-color: $btn-states-color !important;
-        background-image: linear-gradient(to bottom left, $btn-color, $btn-states-color, $btn-color) !important;
-        background-image: -webkit-linear-gradient(to bottom left, $btn-color, $btn-states-color, $btn-color) !important;
-        background-image: -o-linear-gradient(to bottom left, $btn-color, $btn-states-color, $btn-color) !important;
-        background-image: -moz-linear-gradient(to bottom left, $btn-color, $btn-states-color, $btn-color) !important;
-        color: $white;
-        box-shadow: none;
-    }
+    // &:hover,
+    // &:focus,
+    // &:active,
+    // &.active,
+    // &:active:focus,
+    // &:active:hover,
+    // &.active:focus,
+    // &.active:hover
+    //  {
+    //     // background-color: $btn-states-color !important;
+    //     // background-image: linear-gradient(to bottom left, $btn-color, $btn-states-color, $btn-color) !important;
+    //     // background-image: -webkit-linear-gradient(to bottom left, $btn-color, $btn-states-color, $btn-color) !important;
+    //     // background-image: -o-linear-gradient(to bottom left, $btn-color, $btn-states-color, $btn-color) !important;
+    //     // background-image: -moz-linear-gradient(to bottom left, $btn-color, $btn-states-color, $btn-color) !important;
+    //     color: $white;
+    //     box-shadow: none;
+    // }
 
     &:active{
       box-shadow: none !important;
-      transform: translateY(1px) !important;
-      transition: all .15s ease;
+    //   transform: translateY(1px) !important;
+    //   transition: all .15s ease;
     }
 
     &.disabled,
